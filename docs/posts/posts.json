@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "path": "posts/2022-02-07-welcome/",
+    "title": "Welcome!",
+    "description": "Welcome to my new website.",
+    "author": [
+      {
+        "name": "Erin de Leon Sanchez",
+        "url": {}
+      }
+    ],
+    "date": "2022-02-07",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-02-07T16:57:51-08:00",
+    "input_file": "welcome.knit.md"
+  }
+]

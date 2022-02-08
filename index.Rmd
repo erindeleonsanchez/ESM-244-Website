@@ -1,21 +1,18 @@
 ---
 title: "Erin de Leon Sanchez"
-description: |
-  I am a second year Ph.D. student in Ecology, Evolution, and Marine Biology at the University of California, Santa Barbara.
+image: "erin.jpeg"
 site: distill::distill_website
+links:
+  - label: LinkedIn
+    url: "https://linkedin.com/in/erindeleonsanchez/"
+  - label: Twitter
+    url: "https://twitter.com/ErindeLeonSanc1"
+  - label: GitHub
+    url: "https://github.com/erindeleonsanchez"
+  - label: Email
+    url: "mailto:erindeleonsanchez@ucsb.edu"
+output:
+  postcards::trestles
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(distill)
-
-# Learn more about creating websites with Distill at:
-# https://rstudio.github.io/distill/website.html
-
-# Learn more about publishing to GitHub Pages at:
-# https://rstudio.github.io/distill/publish_website.html#github-pages
-
-```
-
-
-
+ 
+I am currently a Ph.D. student in Ecology, Evolution, and Marine Biology at the University of California, Santa Barbara. My research is focused on the global change biology of commercially and ecologically important marine invertebrates.

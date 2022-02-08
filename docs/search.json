@@ -6,29 +6,29 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-02-07T16:59:55-08:00"
+      "last_modified": "2022-02-08T08:53:50-08:00"
     },
     {
       "path": "blog.html",
       "title": "Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-02-07T16:59:56-08:00"
+      "last_modified": "2022-02-08T08:53:51-08:00"
     },
     {
-      "path": "CV.html",
+      "path": "cv.html",
       "title": "CV",
       "description": "Current CV",
       "author": [],
       "contents": "\nEducation\nUniversity of California, Santa Barbara (UCSB)\nEcology Evolution, and Marine Biology\nPh.D. in 2026\n\nUniversity of California, Davis (UCD)\nBachelor of Science in Biological Sciences\n\nWork Experience\n2018 – 2020\nUC Davis, Department of Animal Science, PI: Prof. Anne Todgham *Laboratory and Field Technician: American River Chinook Salmon Survival in Relation to Redd Water Quality: The Role of Spatial and Temporal Variability\nLaboratory Technician: DNA barcoding early life stages of Antarctic fishes\nUndergraduate Researcher: Critical windows of stress tolerance during Chinook salmon development\nUndergraduate Researcher: RNAseq sample preparation for California mussels\n\n\n2019\nUC Davis Coastal and Marine Sciences Institute, Bodega Marine Laboratory, Bodega Bay, CA *Undergraduate Researcher: Effects of a record-breaking heatwave on mussel bed communities in northern California\n\n2018\nUC Santa Barbara Marine Science Institute, University of California, Santa Barbara, PI: Prof. Gretchen Hofmann *Summer Undergraduate Researcher: Physiological and molecular assessment of thermal tolerance of Lytechinus pictus\n\n2016 – 2018\nUC Davis, Department of Pharmacology, PI: Profs. Donald Bers and Julie Bossuyt *Undergraduate Researcher: Interactome Analysis of CaMKIIδ in Cardiac Myocytes Using a Proximity Labeling Approach\n\n\n\n\n",
-      "last_modified": "2022-02-07T16:59:58-08:00"
+      "last_modified": "2022-02-08T08:53:53-08:00"
     },
     {
       "path": "index.html",
       "title": "Erin de Leon Sanchez",
       "author": [],
       "contents": "\n\n          \n          \n          Erin de Leon Sanchez\n          \n          \n          Home\n          About\n          Blog\n          CV\n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              Erin de Leon Sanchez\n            \n            \n              \n                \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Email\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            I am currently a Ph.D. student in Ecology, Evolution, and Marine Biology at the University of California, Santa Barbara. My research is focused on the global change biology of commercially and ecologically important marine invertebrates.\n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              Erin de Leon Sanchez\n            \n            \n              \n                \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      Twitter\n                    \n                  \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Email\n                    \n                  \n                                  \n              \n            \n            \n              I am currently a Ph.D. student in Ecology, Evolution, and Marine Biology at the University of California, Santa Barbara. My research is focused on the global change biology of commercially and ecologically important marine invertebrates.\n            \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2022-02-07T16:59:58-08:00"
+      "last_modified": "2022-02-08T08:53:54-08:00"
     }
   ],
   "collections": ["posts/posts.json"]

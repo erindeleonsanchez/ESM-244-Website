@@ -1,0 +1,23 @@
+---
+title: "Second Year Slump"
+description: |
+  I feel like everyone in their second year of their Ph.D. hits a wall in Winter quarter...
+author:
+  - name: Erin de Leon Sanchez
+    url: {}
+date: 2022-02-23
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

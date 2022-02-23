@@ -3,8 +3,6 @@ title: "Erin de Leon Sanchez"
 image: "erin.jpeg"
 site: distill::distill_website
 links:
-  - label: LinkedIn
-    url: "https://linkedin.com/in/erindeleonsanchez/"
   - label: Twitter
     url: "https://twitter.com/ErindeLeonSanc1"
   - label: GitHub

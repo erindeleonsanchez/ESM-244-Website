@@ -1,17 +1,65 @@
 ---
-title: "The Great Mussel Mortality"
+title: "Climatic variables"
 description: |
-  This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory.
-output: distill::distill_article
+  This is an assignment I did in ESM 244 on various climatic variables.
+output: 
+  distill::distill_article:
+    code_folding: hide
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+ 
+library(tidyverse)
+library(here)
+library(ggfortify) # For PCA biplot
+library(patchwork)
 
-```{r, include = FALSE}
-library(vembedr)
 ```
 
-```{r, echo = FALSE}
-embed_url("https://www.youtube.com/watch?v=0vpFlbQcpWQ")
+### Introduction:
+Here I explore miscellaneous environmental and climatic variables (at the country-level) and run principal component analysis (PCA) on the subset data. I select the variables elevation, mean annual rainfal, mean annual temperature range, mean annual temperature, mean wind, and mean cloudiness. The raw data were compiled and provided by @zander_venter on Kaggle; data is all acquired through Google Earth Engine (https://earthengine.google.com/). 
+
+### Data wrangling
+
+```{r}
+# Read in the data & create a subset
+env_vars_clean <- read_csv(here("world_env_vars.csv")) %>% 
+  drop_na() %>%  # Dropped NA values
+  select(Country, elevation, rain_mean_annual, temp_annual_range, temp_mean_annual, wind, cloudiness) # Selected 6 variables
 ```
 
+### Principal Component Analysis 
+
+```{r}
+env_vars_pca <- env_vars_clean %>% 
+  select(elevation:cloudiness) %>% 
+  scale() %>%
+  prcomp()
+
+# see the loadings (weighing for each principal component)
+env_vars_pca$rotation
+```
+
+```{r}
+autoplot(env_vars_pca,
+         data = env_vars_clean,
+         loadings = TRUE, 
+         loadings.label = TRUE,
+         loadings.colour = 'black',
+         loadings.label.colour = 'black',
+         loadings.label.vjust = -0.5) +
+  #scale_color_manual() +
+  theme_minimal()
+
+```
+
+**Figure 1:** PCA plot of six environmental and climactic variables: elevation, mean annual rainfal, mean annual temperature range, mean annual temperature, mean wind, and mean cloudiness. 
+
+
+### Summary 
+- Mean annual rainfall and cloudiness appear to be positively correlated with each other.
+- Elevation and mean annual temperature are negatively correlated. 
+- PC1 explains 45.41% of the variance.
+- PC2 explains 22.71% of the variance.
 

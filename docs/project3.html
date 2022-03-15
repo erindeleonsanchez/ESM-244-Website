@@ -87,29 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Erin de Leon Sanchez: The Great Mussel Mortality</title>
+  <title>Erin de Leon Sanchez: Climatic variables</title>
 
-  <meta property="description" itemprop="description" content="This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory."/>
+  <meta property="description" itemprop="description" content="This is an assignment I did in ESM 244 on various climatic variables."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Erin de Leon Sanchez: The Great Mussel Mortality"/>
+  <meta property="og:title" content="Erin de Leon Sanchez: Climatic variables"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory."/>
+  <meta property="og:description" content="This is an assignment I did in ESM 244 on various climatic variables."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Erin de Leon Sanchez"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Erin de Leon Sanchez: The Great Mussel Mortality"/>
-  <meta property="twitter:description" content="This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory."/>
+  <meta property="twitter:title" content="Erin de Leon Sanchez: Climatic variables"/>
+  <meta property="twitter:description" content="This is an assignment I did in ESM 244 on various climatic variables."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["The Great Mussel Mortality"]},{"type":"character","attributes":{},"value":["This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory.\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Climatic variables"]},{"type":"character","attributes":{},"value":["This is an assignment I did in ESM 244 on various climatic variables.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding"]}},"value":[{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2362,7 +2362,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-  <link href="site_libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2382,7 +2381,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"The Great Mussel Mortality","description":"This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory.","authors":[]}
+{"title":"Climatic variables","description":"This is an assignment I did in ESM 244 on various climatic variables.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2405,8 +2404,8 @@ Projects
 </button>
 <div class="nav-dropdown-content">
 <a href="project1.html">CA Oil Spills</a>
-<a href="caseagrant.pdf">CA Sea Grant Fellowship</a>
-<a href="project3.html">Mussel Mortality</a>
+<a href="project2.html">Sentiment Analysis</a>
+<a href="project3.html">Climatic Variables</a>
 <a href="project4.html">Mono Lake Levels</a>
 </div>
 </div>
@@ -2420,22 +2419,92 @@ Projects
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>The Great Mussel Mortality</h1>
+<h1>Climatic variables</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory.</p></p>
+<p><p>This is an assignment I did in ESM 244 on various climatic variables.</p></p>
 </div>
 
 
 <div class="d-article">
+<h3 id="introduction">Introduction:</h3>
+<p>Here I explore miscellaneous environmental and climatic variables (at the country-level) and run principal component analysis (PCA) on the subset data. I select the variables elevation, mean annual rainfal, mean annual temperature range, mean annual temperature, mean wind, and mean cloudiness. The raw data were compiled and provided by <span class="citation" data-cites="zander_venter">@zander_venter</span> on Kaggle; data is all acquired through Google Earth Engine (<a href="https://earthengine.google.com/" class="uri">https://earthengine.google.com/</a>).</p>
+<h3 id="data-wrangling">Data wrangling</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="vembedr">
-<div>
-<iframe src="https://www.youtube.com/embed/0vpFlbQcpWQ" width="533" height="300" frameborder="0" allowfullscreen="" data-external="1"></iframe>
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data &amp; create a subset</span>
+<span class='va'>env_vars_clean</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/readr/man/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span><span class='op'>(</span><span class='st'>"world_env_vars.csv"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/magrittr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/tidyr/man/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/magrittr/man/pipe.html'>%&gt;%</a></span>  <span class='co'># Dropped NA values</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='va'>Country</span>, <span class='va'>elevation</span>, <span class='va'>rain_mean_annual</span>, <span class='va'>temp_annual_range</span>, <span class='va'>temp_mean_annual</span>, <span class='va'>wind</span>, <span class='va'>cloudiness</span><span class='op'>)</span> <span class='co'># Selected 6 variables</span>
+</code></pre>
 </div>
+</details>
 </div>
+<h3 id="principal-component-analysis">Principal Component Analysis</h3>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>env_vars_pca</span> <span class='op'>&lt;-</span> <span class='va'>env_vars_clean</span> <span class='op'><a href='https://rdrr.io/pkg/magrittr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='va'>elevation</span><span class='op'>:</span><span class='va'>cloudiness</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/magrittr/man/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/raster/man/scale.html'>scale</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/magrittr/man/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/prcomp.html'>prcomp</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='co'># see the loadings (weighing for each principal component)</span>
+<span class='va'>env_vars_pca</span><span class='op'>$</span><span class='va'>rotation</span>
+</code></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</details>
+<pre><code>                         PC1        PC2         PC3         PC4
+elevation          0.2318856 -0.5859021 -0.31202817  0.69907033
+rain_mean_annual  -0.5474628 -0.2041851  0.08978087  0.04655221
+temp_annual_range  0.5408331 -0.1181311 -0.09788846 -0.43470624
+temp_mean_annual  -0.3682567  0.5049493 -0.45147496  0.23546892
+wind               0.2364959  0.3401517  0.72055377  0.48356326
+cloudiness        -0.4030755 -0.4799950  0.40245283 -0.17574132
+                          PC5         PC6
+elevation         -0.01235316 -0.12936105
+rain_mean_annual  -0.80331930  0.05516645
+temp_annual_range -0.41376048 -0.56903005
+temp_mean_annual   0.04529193 -0.58998864
+wind              -0.15464977 -0.22675706
+cloudiness         0.39668610 -0.50687456</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>env_vars_pca</span>,
+         data <span class='op'>=</span> <span class='va'>env_vars_clean</span>,
+         loadings <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+         loadings.label <span class='op'>=</span> <span class='cn'>TRUE</span>,
+         loadings.colour <span class='op'>=</span> <span class='st'>'black'</span>,
+         loadings.label.colour <span class='op'>=</span> <span class='st'>'black'</span>,
+         loadings.label.vjust <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'>#scale_color_manual() +</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="project3_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p><strong>Figure 1:</strong> PCA plot of six environmental and climactic variables: elevation, mean annual rainfal, mean annual temperature range, mean annual temperature, mean wind, and mean cloudiness.</p>
+<h3 id="summary">Summary</h3>
+<ul>
+<li>Mean annual rainfall and cloudiness appear to be positively correlated with each other.</li>
+<li>Elevation and mean annual temperature are negatively correlated.</li>
+<li>PC1 explains 45.41% of the variance.</li>
+<li>PC2 explains 22.71% of the variance.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -16,9 +16,9 @@ navbar:
       menu:
       - text: 'CA Oil Spills'
         href: project1.html
-      - text: 'CA Sea Grant Fellowship'
-        href: "caseagrant.pdf"
-      - text: 'Mussel Mortality'
+      - text: 'Sentiment Analysis'
+        href: project2.html
+      - text: 'Climatic Variables'
         href: project3.html
       - text: 'Mono Lake Levels'
         href: project4.html

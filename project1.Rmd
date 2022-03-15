@@ -1,7 +1,7 @@
 ---
 title: "Projects"
 description: |
-  Some of the things I have worked on during my undergraduate and graduate career.
+  This is an assignment I did in ESM 244 on CA Oil Spills.
 output: 
   distill::distill_article:
     code_folding: hide

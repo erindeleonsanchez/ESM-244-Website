@@ -1,0 +1,132 @@
+---
+title: "Sentiment Analysis"
+description: |
+  This is the sentiment update I did in ESM 244 for a paper that I cite super often!
+output: 
+  distill::distill_article:
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidytext)
+library(textdata)
+library(pdftools)
+library(ggwordcloud)
+```
+
+## Overview:
+Here, I perform text wrangling and sentiment analysis with Oliver et al. (2019): Longer and more frequent marine heatwaves over the past century. This paper is meaningful to me because I study the impacts of marine heatwaves on fishery species in the Santa Barbara Channel. 
+
+**Data citation:** Oliver, E. C. J., Donat, M. G., Burrows, M. T., Moore, P. J., Smale, D. A., Alexander, L. V., Benthuysen, J. A., Feng, M., Sen Gupta, A., Hobday, A. J., Holbrook, N. J., Perkins-Kirkpatrick, S. E., Scannell, H. A., Straub, S. C., & Wernberg, T. (2018). Longer and more frequent marine heatwaves over the past century. Nature Communications, 9(1), 1–12.
+
+
+```{r, cache = TRUE}
+### Get Oliver et al. 2019
+oliver_text <- pdf_text(here::here('Oliver et al 2019.pdf'))
+```
+
+
+```{r, results='hide'}
+### Get it into a data frame
+oliver_lines <- data.frame(oliver_text) %>% 
+  mutate(page = 1:n()) %>%
+  mutate(text_full = str_split(oliver_text, pattern = '\\n')) %>% 
+  unnest(text_full) %>% 
+  mutate(text_full = str_trim(text_full)) 
+```
+
+
+```{r, results='hide'}
+### Get some word counts by page
+oliver_words <- oliver_lines %>% 
+  unnest_tokens(word, text_full) %>% 
+  select(-oliver_text)
+
+oliver_wordcount <- oliver_words %>% 
+  count(page, word)
+
+# remove stop words
+head(stop_words)
+ 
+oliver_words_clean <- oliver_words %>% 
+  anti_join(stop_words, by = 'word')
+
+# recount
+nonstop_counts <- oliver_words_clean %>% 
+  count(page, word)
+
+```
+
+
+```{r, results='hide', fig.show='hide'}
+### Find top 5 words on each page
+top_5_words <- nonstop_counts %>% 
+  group_by(page) %>% 
+  arrange(-n) %>% 
+  slice(1:5) %>%
+  ungroup()
+ 
+# graph it 
+ggplot(data = top_5_words, aes(x = n, y = word)) +
+  geom_col(fill = "blue") +
+  facet_wrap(~page, scales = "free")
+
+```
+
+### Word Cloud 
+
+```{r}
+top100 <- nonstop_counts %>% 
+  arrange(-n) %>% 
+  slice(1:100)
+
+cloud <- ggplot(data = top100, aes(label = word)) +
+  geom_text_wordcloud(aes(color = n, size = n), shape = "diamond") +
+  scale_size_area(max_size = 6) +
+  scale_color_gradientn(colors = c("darkgreen","blue","purple")) +
+  theme_minimal()
+
+cloud
+
+```
+
+**Figure 1:** The top 100 most frequently used words in Oliver et al. (2019).
+
+### Sentiment analysis
+
+```{r, results='hide'}
+get_sentiments(lexicon = "afinn")
+ 
+oliver_afinn <- oliver_words_clean %>% 
+  inner_join(get_sentiments("afinn"), by = 'word')
+
+# Get counts 
+afinn_counts <- oliver_afinn %>% 
+  count(page, value)
+ 
+# Plot them: 
+# ggplot(data = afinn_counts, aes(x = value, y = n)) +
+#   geom_col() +
+#   facet_wrap(~page)
+ 
+# Find the mean afinn score by chapter: 
+afinn_means <- oliver_afinn %>% 
+  group_by(page) %>% 
+  summarize(mean_afinn = mean(value))
+ 
+ggplot(data = afinn_means, 
+       aes(x = fct_rev(factor(page)),
+           y = mean_afinn, fill = page)) +
+  geom_col() +
+  labs(x = "Mean afinn score", y = "Page number") +
+  coord_flip() +
+  theme(legend.position="none") +
+  theme_minimal() +
+  theme(legend.position = 'none')
+
+```
+
+**Figure 2:** Sentiment analysis with "afinn" by page number for Oliver et al. (2019)

@@ -12,8 +12,16 @@ navbar:
       href: about.html
     - text: "Blog"      
       href: blog.html
-    - text: "Projects"      
-      href: projects.html
+    - text: "Projects"
+      menu:
+      - text: 'CA Oil Spills'
+        href: project1.html
+      - text: 'CA Sea Grant Fellowship'
+        href: "caseagrant.pdf"
+      - text: 'Mussel Mortality'
+        href: project3.html
+      - text: 'Mono Lake Levels'
+        href: project4.html
     - text: "CV"
-      href: CV.html
+      href: "Erin_deLeonSanchez_CV.pdf"
 output: distill::distill_article

@@ -1,0 +1,120 @@
+---
+title: "Mono Lake Levels"
+description: |
+  This is an assignment I did in ESM 206.
+output: 
+  distill::distill_article:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(here)
+library(tidyverse)
+library(janitor)
+```
+
+
+
+```{r}
+mono_lake <- read_csv(here("data", "mono_lake_annual_levels.csv"), skip = 5) %>% 
+  clean_names() %>% 
+  na.omit() 
+```
+
+```{r}
+ggplot(data = mono_lake, aes(x = year, y = lake_level_feet_above_sea_level)) +
+  geom_line(color = "black",
+            size = 1) +
+  labs(x = "Year",
+       y = "Lake level (Feet above sea level)",
+       title = "Mono Lake Levels, 1850-2017"
+       ) +
+  geom_ribbon(aes(ymin = 6355,
+                  ymax = lake_level_feet_above_sea_level),
+              fill = "lightblue") +
+  theme_minimal() +
+  theme(plot.margin = margin(t = 0.5,
+                             r = 0.5,
+                             b = 0.5,
+                             l = 0.5,
+                             unit = "cm"),
+        # Adjust to the title text
+        plot.title = element_text(face = "bold",
+                                  hjust = 0.5,
+                                  size = 12)) +
+   scale_x_continuous(limits = c(1850, 2017), 
+                     breaks = c(1850, 1875, 1900, 1925, 1950, 1975, 2000, 2017),
+                     expand = c(0, 0)) +
+  scale_y_continuous(limits = c(6355, 6440), 
+                     expand = c(0, 0),
+                     breaks = seq(6350, 6430, 20)
+                     ) +
+    annotate("text", 
+           label = "1941:\n LA begins diverting water", 
+           y = 6430, 
+           x = 1939,
+           hjust = 0,
+           size = 3.0,
+           color = "black") +
+  
+    annotate("text", 
+           label = "1978:\n Mono Lake Committee \n founded", 
+           y = 6398, 
+           x = 1978,
+           hjust = 0,
+           size = 3.0,
+           color = "black") +
+  
+  # Add some reference lines
+  annotate("text",
+           label = "6,377 ft: land bridges emerge",
+           x = 1852,
+           y = 6375,
+           color = "black",
+           size = 3,
+           hjust = 0) +
+  
+  geom_line(aes(y = 6377),
+            color = "red",
+            alpha = 1,
+            linetype = "dotted") +
+  
+  geom_line(aes(y = 6360),
+            color = "red",
+            linetype = "dotted") +
+  
+  annotate("text",
+           label = "6360 ft: birds’ food sources adversely affected at salinity of 120 g/L",
+           x = 1852,
+           y = 6358,
+           color = "black",
+           size = 3,
+           hjust = 0) +
+  
+  # add an arrow
+  
+  geom_segment(aes(x = 1941, 
+                   xend = 1941,
+                   y = 6419, 
+                   yend = 6426),
+               color = "black",
+               arrow = arrow(ends = "first",
+                             type = "open",
+                             length = unit(0.2,"cm")
+                             )) +
+  geom_segment(aes(x = 1979, 
+                   xend = 1979,
+                   y = 6380, 
+                   yend = 6390),
+               color = "black",
+               arrow = arrow(ends = "first",
+                             type = "open",
+                             length = unit(0.2,"cm")
+                             ) 
+  
+               )
+```
+
+**Figure:** Mono Lake is a terminal saline lake in Lee Vining, California, northeast of Yosemite National Park in the Pamidu Toiyabe (Sierra Nevada), and is home to the Kootzaduka’a (or Kutzadika’a) Tribe. Illustrated here are important events in the history of Mono Lake, including the diversion of water to Los Angeles, California and the founding of the Mono Lake Committee, which spearheaded efforts to save Mono Lake. At 6,377 feet above sea level, land bridges emerge between the mainland and islands, allowing predators to access major bird nesting sites for food. At 6,360 feet, bird food sources are adversely affected (Mono Basin Ecosystem Study Committee, Board on Environmental Studies and Toxicology (NRC), 1987). Data is from Mono Basin Clearinghouse. 
+

@@ -1,0 +1,17 @@
+---
+title: "The Great Mussel Mortality"
+description: |
+  This is a video I created as an undergraduate researcher at the UC Davis Bodega Marine Laboratory.
+output: distill::distill_article
+---
+
+
+```{r, include = FALSE}
+library(vembedr)
+```
+
+```{r, echo = FALSE}
+embed_url("https://www.youtube.com/watch?v=0vpFlbQcpWQ")
+```
+
+

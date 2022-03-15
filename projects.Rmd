@@ -1,6 +1,0 @@
----
-title: "Projects"  # any name you want here
-image: "gametecollection.jpeg"
-description: Ph.D. projects portfolio
----
-[Click Here](https://github.com/erindeleonsanchez/esm206_assignment4_task2) to view an assignment I did in ESM 206!
